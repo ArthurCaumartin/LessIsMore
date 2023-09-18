@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager intance;
     [SerializeField] RockLauncher rockLauncher;
+    [SerializeField] LevelTimer levelTimer;
+    [SerializeField] TargetManager targetManager;
         
     [Header("Level Item :")]
     [SerializeField] GameObject targetPrefab;
@@ -23,10 +25,16 @@ public class GameManager : MonoBehaviour
         InitialiseGameLevel();
     }
 
+    public void TargetHit()
+    {
+        SpawnNewRock();
+    }
+
     public void InitialiseGameLevel()
     {
-        SpawnTarget();
+        targetManager.SpawnTarget();
         SpawnNewRock();
+        levelTimer.StartTimer();
     }
 
     void SpawnTarget()
