@@ -14,6 +14,7 @@ public class TargetHit : MonoBehaviour
             GameManager.intance.TargetHit();
             GetComponent<Collider2D>().enabled = false;
             GetComponentInChildren<SpriteRenderer>().sprite = brokenGlass;
+            GetComponentInParent<TargetContainer>().RemoveTarget(gameObject);
         }
     }
 }
