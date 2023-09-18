@@ -10,7 +10,8 @@ public class TargetHit : MonoBehaviour
         RockDestroy rockDestroy = other.GetComponent<RockDestroy>();
         if(rockDestroy)
         {
-            rockDestroy.DoDestroy();
+            print("Target Hit");
+            rockDestroy.targetHit = true;
             GameManager.intance.TargetHit();
             GetComponent<Collider2D>().enabled = false;
             GetComponentInChildren<SpriteRenderer>().sprite = brokenGlass;

@@ -19,9 +19,14 @@ public class GameManager : MonoBehaviour
         intance = this;
     }
 
+    void Start()
+    {
+        InitialiseGameLevel();
+    }
+
     public void TargetHit()
     {
-        SpawnNewRock();
+
     }
 
     [ContextMenu("InitialiseGameLevel")]

@@ -6,12 +6,30 @@ using UnityEngine;
 public class RockLauncher : MonoBehaviour
 {
     [SerializeField] float shootForceMultiplier;
-    Rigidbody2D rockRigidbody;
+    [SerializeField] float maxChargeDistance;
+    Rigidbody2D projectileRigidbody;
     Vector2 chargeStart;
     Vector2 chargeEnd;
     bool shoot;
     bool currentRockShot = false;
+    bool isDraging = false;
     Vector2 mousePosition;
+
+    Vector2 shootDirection;
+    float shootDistance;
+
+    void Update()
+    {
+        if(isDraging)
+        {
+            chargeEnd = mousePosition;
+            shootDirection = (chargeStart - chargeEnd).normalized;
+            shootDistance = Vector2.Distance(chargeStart, chargeEnd);
+            shootDistance = Mathf.Clamp(shootDistance, -50f, maxChargeDistance); 
+
+            Debug.DrawRay(chargeStart, shootDirection * shootDistance, Color.green, 0.01f);
+        }
+    }
 
     void FixedUpdate()
     {
@@ -19,13 +37,7 @@ public class RockLauncher : MonoBehaviour
         {
             shoot = false;
             currentRockShot = true;
-            rockRigidbody.GetComponent<ProjectileLife>().StartLife();
-            rockRigidbody.isKinematic = false;
-
-            Vector2 shootDirection = (chargeEnd - chargeStart).normalized;
-            float shootDistance = Vector2.Distance(chargeEnd, chargeStart);
-            rockRigidbody.AddForce(shootDirection * shootDistance * shootForceMultiplier, ForceMode2D.Impulse);
-            rockRigidbody.angularVelocity += Random.Range(-60f, 60f) * shootDistance;
+            LaunchProjectile();
         }
         else
         {
@@ -33,9 +45,17 @@ public class RockLauncher : MonoBehaviour
         }
     }
 
+    void LaunchProjectile()
+    {
+        projectileRigidbody.GetComponent<ProjectileLife>().StartLife();
+        projectileRigidbody.isKinematic = false;
+        projectileRigidbody.AddForce(shootDirection * shootDistance * shootForceMultiplier, ForceMode2D.Impulse);
+        projectileRigidbody.angularVelocity += Random.Range(-60f, 60f) * shootDistance;
+    }
+
     public void SetCurrentRock(GameObject toSet)
     {
-        rockRigidbody = toSet.GetComponent<Rigidbody2D>();
+        projectileRigidbody = toSet.GetComponent<Rigidbody2D>();
         currentRockShot = false;
     }
 
@@ -44,10 +64,11 @@ public class RockLauncher : MonoBehaviour
         if(callback.performed)
         {
             chargeStart = mousePosition;
+            isDraging = true;
         }
         else if(callback.canceled)
         {
-            chargeEnd = mousePosition;
+            isDraging = false;
             shoot = true;
         }
     }

@@ -14,7 +14,6 @@ public class ProjectileLife : MonoBehaviour
     IEnumerator Life()
     {
         yield return new WaitForSeconds(lifeTime);
-        GameManager.intance.SpawnNewRock();
         rockDestroy.DoDestroy();
     }
 }
