@@ -5,9 +5,8 @@ using UnityEngine;
 public class RockDestroy : MonoBehaviour
 {
     [SerializeField] ParticleSystem particle;
-    public IEnumerator DoDestroy(float time)
+    public void DoDestroy()
     {
-        yield return new WaitForSeconds(time);
         GameObject newParticle = Instantiate(particle.gameObject, transform.position, Quaternion.identity);
         Destroy(newParticle.gameObject, particle.main.duration);
         Destroy(gameObject);

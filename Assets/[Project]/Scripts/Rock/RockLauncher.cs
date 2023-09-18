@@ -6,35 +6,47 @@ using UnityEngine;
 public class RockLauncher : MonoBehaviour
 {
     [SerializeField] float shootMultiplier;
-    [SerializeField] Rigidbody2D ballRigidbody;
+    Rigidbody2D rockRigidbody;
     Vector2 chargeStart;
     Vector2 chargeEnd;
     bool shoot;
+    Vector2 mousePosition;
 
     void FixedUpdate()
     {
         if(shoot)
         {
             shoot = false;
-            ballRigidbody.velocity = Vector2.zero;
+            rockRigidbody.velocity = Vector2.zero;
 
             Vector2 shootDirection = (chargeEnd - chargeStart).normalized;
             float shootDistance = Vector2.Distance(chargeEnd, chargeStart);
-            ballRigidbody.AddForce(shootDirection * shootDistance * shootMultiplier, ForceMode2D.Impulse);
-            ballRigidbody.angularVelocity += Random.Range(-60f, 60f) * shootDistance;
+            rockRigidbody.AddForce(shootDirection * shootDistance * shootMultiplier, ForceMode2D.Impulse);
+            rockRigidbody.angularVelocity += Random.Range(-60f, 60f) * shootDistance;
         }
+    }
+
+    public void SetCurrentRock(GameObject toSet)
+    {
+        rockRigidbody = toSet.GetComponent<Rigidbody2D>();
     }
 
     public void OnClic(InputAction.CallbackContext callback)
     {
         if(callback.performed)
         {
-            // chargeStart = InputManager.instance.worldMousePosition;
+            chargeStart = mousePosition;
         }
         else if(callback.canceled)
         {
-            // chargeEnd = InputManager.instance.worldMousePosition;
+            chargeEnd = mousePosition;
+            rockRigidbody.isKinematic = false;
             shoot = true;
         }
+    }
+
+    public void OnMouseMouve(InputAction.CallbackContext callback)
+    {
+        mousePosition = Camera.main.ScreenToWorldPoint(callback.ReadValue<Vector2>());
     }
 }
