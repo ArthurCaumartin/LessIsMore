@@ -5,30 +5,38 @@ using UnityEngine;
 
 public class RockLauncher : MonoBehaviour
 {
-    [SerializeField] float shootMultiplier;
+    [SerializeField] float shootForceMultiplier;
     Rigidbody2D rockRigidbody;
     Vector2 chargeStart;
     Vector2 chargeEnd;
     bool shoot;
+    bool currentRockShot = false;
     Vector2 mousePosition;
 
     void FixedUpdate()
     {
-        if(shoot)
+        if(shoot && !currentRockShot)
         {
             shoot = false;
-            rockRigidbody.velocity = Vector2.zero;
+            currentRockShot = true;
+            rockRigidbody.GetComponent<ProjectileLife>().StartLife();
+            rockRigidbody.isKinematic = false;
 
             Vector2 shootDirection = (chargeEnd - chargeStart).normalized;
             float shootDistance = Vector2.Distance(chargeEnd, chargeStart);
-            rockRigidbody.AddForce(shootDirection * shootDistance * shootMultiplier, ForceMode2D.Impulse);
+            rockRigidbody.AddForce(shootDirection * shootDistance * shootForceMultiplier, ForceMode2D.Impulse);
             rockRigidbody.angularVelocity += Random.Range(-60f, 60f) * shootDistance;
+        }
+        else
+        {
+            shoot = false;
         }
     }
 
     public void SetCurrentRock(GameObject toSet)
     {
         rockRigidbody = toSet.GetComponent<Rigidbody2D>();
+        currentRockShot = false;
     }
 
     public void OnClic(InputAction.CallbackContext callback)
@@ -40,7 +48,6 @@ public class RockLauncher : MonoBehaviour
         else if(callback.canceled)
         {
             chargeEnd = mousePosition;
-            rockRigidbody.isKinematic = false;
             shoot = true;
         }
     }

@@ -10,6 +10,7 @@ public class TargetHit : MonoBehaviour
         if(rockDestroy)
         {
             rockDestroy.DoDestroy();
+            GameManager.intance.InitialiseGameLevel();
             Destroy(gameObject);
         }
     }
