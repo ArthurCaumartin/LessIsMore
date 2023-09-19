@@ -19,6 +19,17 @@ public class MenuManager : MonoBehaviour
         ResetElement();
     }
 
+    public void PlayMenuElementAnimation()
+    {
+        foreach (MenuElement item in menuElementsList)
+        {
+            print(item.transform.parent.gameObject.name);
+            if(item.transform.parent.gameObject.activeSelf)
+                item.RemoveAnimation();
+        }
+    }
+
+#region Call by MenuElement Events
     public void SetStartUI()
     {
         ResetElement();
@@ -32,6 +43,7 @@ public class MenuManager : MonoBehaviour
         startMenu.SetActive(false);
         settingMenu.SetActive(true);
     }
+#endregion
 
     void ResetElement()
     {

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelTimer : MonoBehaviour
 {
-    [SerializeField] float startValue;
+    [SerializeField] BackgroundTimer backgroundTimer;
+    [SerializeField] float startTimer;
     bool isRunning;
     float currentTimer;
 
@@ -14,6 +15,7 @@ public class LevelTimer : MonoBehaviour
         {
             currentTimer -= Time.deltaTime;
             CanvasManager.instance.RefreshTimer(currentTimer);
+            backgroundTimer.SetBackgroundColor(Mathf.InverseLerp(0, startTimer, currentTimer));
             if(currentTimer <= 0)
             {
                 StopTimer();
@@ -23,7 +25,7 @@ public class LevelTimer : MonoBehaviour
 
     public void StartTimer()
     {
-        currentTimer = startValue;
+        currentTimer = startTimer;
         isRunning = true;
     }
 

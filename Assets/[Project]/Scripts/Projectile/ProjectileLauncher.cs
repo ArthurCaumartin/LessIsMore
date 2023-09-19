@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using DG.Tweening;
 
 public class ProjectileLauncher : MonoBehaviour
 {
@@ -28,11 +29,17 @@ public class ProjectileLauncher : MonoBehaviour
             shootDistance = Vector2.Distance(chargeStartPosition, chargeEndPosition);
             shootDistance = Mathf.Clamp(shootDistance, -50f, maxChargeDistance);
 
-            projectileLineRenderer.SetPosition(0, chargeStartPosition);
-            projectileLineRenderer.SetPosition(1, chargeEndPosition);
+            SetLineRendererPosition();
 
             Debug.DrawRay(chargeStartPosition, shootDirection * shootDistance, Color.green, 0.01f);
         }
+    }
+
+    public void SetLineRendererPosition()
+    {
+        projectileLineRenderer.SetPosition(0, currentProjectileTransform.position);
+        Vector3 edgeLinePosition = (Vector2)currentProjectileTransform.position + (shootDirection * shootDistance);
+        projectileLineRenderer.SetPosition(1, edgeLinePosition);
     }
 
     void FixedUpdate()
@@ -53,6 +60,8 @@ public class ProjectileLauncher : MonoBehaviour
 
     void LaunchProjectile()
     {
+        projectileLineRenderer.enabled = false;
+
         currentProjectileRigidbody.GetComponent<ProjectileLife>().StartLife();
         currentProjectileRigidbody.isKinematic = false;
         // currentProjectileRigidbody.velocity = Vector2.zero;
@@ -62,7 +71,6 @@ public class ProjectileLauncher : MonoBehaviour
         //! = null; to launch proj only one time
         currentProjectileRigidbody = null;
     }
-
 
     public void OnClic(InputAction.CallbackContext callback)
     {
