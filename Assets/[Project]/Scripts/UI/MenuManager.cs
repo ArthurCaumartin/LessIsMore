@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager instance;
-    GameObject currentMenuProjectile;
+    [SerializeField] GameObject startMenu;
+    [SerializeField] GameObject settingMenu;
     [SerializeField] List<MenuElement> menuElementsList;
 
     void Awake()
@@ -16,14 +16,28 @@ public class MenuManager : MonoBehaviour
 
     void OnEnable()
     {
-        foreach (MenuElement item in menuElementsList)
-        {
-            item.ResetElement();
-        }
+        ResetElement();
+    }
+
+    public void SetStartUI()
+    {
+        ResetElement();
+        startMenu.SetActive(true);
+        settingMenu.SetActive(false);
     }
 
     public void SetSettingsUI()
     {
+        ResetElement();
+        startMenu.SetActive(false);
+        settingMenu.SetActive(true);
+    }
 
+    void ResetElement()
+    {
+        foreach (MenuElement item in menuElementsList)
+        {
+            item.ResetElement();
+        }
     }
 }
