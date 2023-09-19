@@ -7,7 +7,12 @@ public class MenuManager : MonoBehaviour
     public static MenuManager instance;
     [SerializeField] GameObject startMenu;
     [SerializeField] GameObject settingMenu;
-    [SerializeField] List<MenuElement> menuElementsList;
+    [Header("Physics UI Element :")]
+    [SerializeField] MenuElement startButton;
+    [SerializeField] MenuElement settingsButton;
+    [Space]
+    [SerializeField] MenuElement backButton;
+    [SerializeField] List<MenuElement> menuElementList;
 
     void Awake()
     {
@@ -21,7 +26,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayMenuElementAnimation()
     {
-        foreach (MenuElement item in menuElementsList)
+        foreach (MenuElement item in menuElementList)
         {
             print(item.transform.parent.gameObject.name);
             if(item.transform.parent.gameObject.activeSelf)
@@ -47,7 +52,7 @@ public class MenuManager : MonoBehaviour
 
     void ResetElement()
     {
-        foreach (MenuElement item in menuElementsList)
+        foreach (MenuElement item in menuElementList)
         {
             item.ResetElement();
         }

@@ -1584,6 +1584,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Start Button
       objectReference: {fileID: 0}
+    - target: {fileID: 3335038685118543947, guid: be8b789342b447e43a6a7d74b7cc1946, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4446353302519910114, guid: be8b789342b447e43a6a7d74b7cc1946, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.87232894
@@ -2248,7 +2252,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMenu: {fileID: 297477705}
   settingMenu: {fileID: 2826028}
-  menuElementsList:
+  startButton: {fileID: 1162574477}
+  settingsButton: {fileID: 1511112916}
+  backButton: {fileID: 2139045392}
+  menuElementList:
   - {fileID: 1162574477}
   - {fileID: 1511112916}
   - {fileID: 2139045392}
@@ -2262,7 +2269,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3335038685118543947, guid: be8b789342b447e43a6a7d74b7cc1946, type: 3}
       propertyPath: m_Name
-      value: Return Start Menu
+      value: Back Button
       objectReference: {fileID: 0}
     - target: {fileID: 4119855411102908318, guid: be8b789342b447e43a6a7d74b7cc1946, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2327,7 +2334,7 @@ PrefabInstance:
     - target: {fileID: 6383405171220033809, guid: be8b789342b447e43a6a7d74b7cc1946, type: 3}
       propertyPath: elementSprite
       value: 
-      objectReference: {fileID: 21300000, guid: d1f6e5bb990629a4a906421c0676f6af, type: 3}
+      objectReference: {fileID: 21300000, guid: 0d949c8bec086ac4aafd2a252d4e35b0, type: 3}
     - target: {fileID: 6383405171220033809, guid: be8b789342b447e43a6a7d74b7cc1946, type: 3}
       propertyPath: animationDuration
       value: 0.5
@@ -2335,7 +2342,7 @@ PrefabInstance:
     - target: {fileID: 6383405171220033809, guid: be8b789342b447e43a6a7d74b7cc1946, type: 3}
       propertyPath: brokenElementSprite
       value: 
-      objectReference: {fileID: 21300000, guid: a4338f8ebfd232742a36ef16c4794759, type: 3}
+      objectReference: {fileID: 21300000, guid: 16ad4c7aee3f8b64aabb00714fef7d6d, type: 3}
     - target: {fileID: 6383405171220033809, guid: be8b789342b447e43a6a7d74b7cc1946, type: 3}
       propertyPath: animationCurve.m_Curve.Array.size
       value: 5
