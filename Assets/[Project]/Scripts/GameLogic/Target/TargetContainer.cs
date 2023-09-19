@@ -11,6 +11,8 @@ public class TargetContainer : MonoBehaviour
         targetList.Remove(toRemove);
 
         if(targetList.Count == 0)
-            TargetManager.instance.SpawnTarget();
+        {
+            TargetManager.instance.AllTargetDerstroy(transform);
+        }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager intance;
-    [SerializeField] ProjectileLauncher rockLauncher;
     [SerializeField] LevelTimer levelTimer;
     [SerializeField] Score score;
     [SerializeField] ProjectileManager projectileManager;

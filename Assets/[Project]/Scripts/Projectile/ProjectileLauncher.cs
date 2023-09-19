@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
 {
+    [SerializeField] LineRenderer projectileLineRenderer;
     [SerializeField] float shootForceMultiplier;
     [SerializeField] float maxChargeDistance;
     Rigidbody2D currentProjectileRigidbody;
+    Transform currentProjectileTransform;
     Vector2 chargeStartPosition;
     Vector2 chargeEndPosition;
     bool shoot;
@@ -24,7 +26,10 @@ public class ProjectileLauncher : MonoBehaviour
             chargeEndPosition = mousePosition;
             shootDirection = (chargeStartPosition - chargeEndPosition).normalized;
             shootDistance = Vector2.Distance(chargeStartPosition, chargeEndPosition);
-            shootDistance = Mathf.Clamp(shootDistance, -50f, maxChargeDistance); 
+            shootDistance = Mathf.Clamp(shootDistance, -50f, maxChargeDistance);
+
+            projectileLineRenderer.SetPosition(0, chargeStartPosition);
+            projectileLineRenderer.SetPosition(1, chargeEndPosition);
 
             Debug.DrawRay(chargeStartPosition, shootDirection * shootDistance, Color.green, 0.01f);
         }
@@ -41,7 +46,9 @@ public class ProjectileLauncher : MonoBehaviour
 
     public void SetCurrentProjectile(GameObject toSet)
     {
+        currentProjectileTransform =  toSet.GetComponent<Transform>();
         currentProjectileRigidbody = toSet.GetComponent<Rigidbody2D>();
+        projectileLineRenderer = toSet.GetComponentInChildren<LineRenderer>();
     }
 
     void LaunchProjectile()
@@ -52,6 +59,7 @@ public class ProjectileLauncher : MonoBehaviour
         currentProjectileRigidbody.angularVelocity += Random.Range(-60f, 60f) * shootDistance;
         currentProjectileRigidbody.AddForce(shootDirection * shootDistance * shootForceMultiplier, ForceMode2D.Impulse);
 
+        //! = null; to launch proj only one time
         currentProjectileRigidbody = null;
     }
 

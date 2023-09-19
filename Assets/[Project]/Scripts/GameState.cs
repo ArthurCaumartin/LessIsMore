@@ -24,21 +24,6 @@ public class GameState : MonoBehaviour
         SetGameState(State.Menu);
     }
 
-    // public State gameState //! serialisable ?
-    // {
-    //     get
-    //     {
-    //         return currentGameState;
-    //     }
-    //     set
-    //     {
-    //         if(value == currentGameState)
-    //             return;
-            
-    //         currentGameState = value;
-    //     }
-    // }
-
     public void SetGameState(State stateToSet)
     {
         print("Set State : " + stateToSet);
