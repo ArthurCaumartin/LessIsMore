@@ -11,9 +11,6 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerTexte;
     [SerializeField] TextMeshProUGUI scoreTexte;
 
-    // [Header("Menu :")]
-    // [SerializeField] Canvas 
-
     void Awake()
     {
         instance = this;

@@ -28,10 +28,10 @@ public class TargetManager : MonoBehaviour
     }
 
     [ContextMenu("RemoveTarget")]
-    void RemoveTarget()
+    public void RemoveTarget()
     {
         currentTarget.transform.DOMove(targetRemovePoint.position, animationSpeed)
-        .SetSpeedBased()
+        .SetDelay(1f)
         .SetEase(curve);
     }
 }

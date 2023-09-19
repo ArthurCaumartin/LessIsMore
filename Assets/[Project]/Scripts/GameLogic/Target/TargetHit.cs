@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
+using System.Diagnostics.Tracing;
 
 public class TargetHit : MonoBehaviour
 {
@@ -9,15 +10,18 @@ public class TargetHit : MonoBehaviour
         
     void OnTriggerEnter2D(Collider2D other)
     {
-        RockDestroy rockDestroy = other.GetComponent<RockDestroy>();
+        ProjectileDestroy rockDestroy = other.GetComponent<ProjectileDestroy>();
         if(rockDestroy)
         {
-            print("Target Hit");
-            rockDestroy.haveHitTarget = true;
             GameManager.intance.TargetHit();
-            GetComponent<Collider2D>().enabled = false;
-            GetComponentInChildren<SpriteRenderer>().sprite = brokenGlassSprite;
-            GetComponentInParent<TargetContainer>().RemoveTarget(gameObject);
+            DisableThisTarget();
         }
+    }
+
+    void DisableThisTarget()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().sprite = brokenGlassSprite;
+        GetComponentInParent<TargetContainer>().RemoveTarget(gameObject);
     }
 }

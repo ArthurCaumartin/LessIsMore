@@ -13,7 +13,7 @@ public class MenuElement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        RockDestroy rockDestroy = other.GetComponent<RockDestroy>();
+        ProjectileDestroy rockDestroy = other.GetComponent<ProjectileDestroy>();
         if(rockDestroy)
         {
             spriteRenderer.sprite = brokenElementSprite;

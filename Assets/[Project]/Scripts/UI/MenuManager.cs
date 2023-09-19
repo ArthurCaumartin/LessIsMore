@@ -6,41 +6,24 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager instance;
-    [SerializeField] GameObject projectile;
-    [SerializeField] Transform menuProjectileSpawn;
-    [SerializeField] List<MenuElement> menuElementList;
     GameObject currentMenuProjectile;
+    [SerializeField] List<MenuElement> menuElementsList;
 
     void Awake()
     {
         instance = this;
     }
 
-    void Start()
+    void OnEnable()
     {
-        InitialiseMenu();
-    }
-
-    void InitialiseMenu()
-    {
-        gameObject.SetActive(true);
-        ResetMenu();
-    }
-
-    public void ResetMenu()
-    {
-        if(currentMenuProjectile)
-            Destroy(currentMenuProjectile);
-        SpawnMenuProjectile();
-        foreach (MenuElement item in menuElementList)
+        foreach (MenuElement item in menuElementsList)
         {
-            item.ResetElement();  
+            item.ResetElement();
         }
     }
 
-    public void SpawnMenuProjectile()
+    public void SetSettingsUI()
     {
-        GameObject newProjectile = Instantiate(projectile, menuProjectileSpawn.position, Quaternion.identity);
-        currentMenuProjectile = newProjectile;
+
     }
 }

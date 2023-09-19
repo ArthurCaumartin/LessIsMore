@@ -5,15 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager intance;
-    [SerializeField] RockLauncher rockLauncher;
+    [SerializeField] ProjectileLauncher rockLauncher;
     [SerializeField] LevelTimer levelTimer;
+    [SerializeField] Score score;
+    [SerializeField] ProjectileManager projectileManager;
 
-    [Header("Score :")]
-    [SerializeField] int currentScore;
-    [SerializeField] int maxToAdd, minToAdd;
+    [Header("Core GameObject :")]
+    [SerializeField] GameObject physicsUiObject;
+    [SerializeField] GameObject canvasObject;
 
     [Header("Level Object :")]
-    [SerializeField] GameObject targetPrefab;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform inGameProjectileSpawn;
 
@@ -22,39 +23,43 @@ public class GameManager : MonoBehaviour
         intance = this;
     }
 
-    void Start()
+    public void ClearGame()
     {
-        // InitialiseGameLevel();
+        print("Clear Game");
+
+        ProjectileManager.instance.DeleteProjectile();
+
+        //! In Game
+        score.ResetScore();
+        levelTimer.StopTimer();
+        canvasObject.SetActive(false);
+
+        //! Menu
+        physicsUiObject.SetActive(false);
+    }
+
+    public void ActiveMenu()
+    {
+        physicsUiObject.SetActive(true);
+        projectileManager.SpawnNewProjectile();
+    }
+
+    public void ActiveInGame()
+    {
+        canvasObject.SetActive(true);
+        StartGameLevel();
+    }
+
+    [ContextMenu("InitialiseGameLevel")]
+    public void StartGameLevel()
+    {
+        TargetManager.instance.SpawnTarget();
+        projectileManager.SpawnNewProjectile();
+        levelTimer.StartTimer();
     }
 
     public void TargetHit()
     {
-        ActualiseScore();
-    }
-
-    [ContextMenu("InitialiseGameLevel")]
-    public void InitialiseGameLevel()
-    {
-        TargetManager.instance.SpawnTarget();
-        SpawnNewProjectile();
-        levelTimer.StartTimer();
-    }
-
-    public void SpawnNewProjectile()
-    {
-        GameObject newProjectile = Instantiate(projectilePrefab, inGameProjectileSpawn.position, Quaternion.identity);
-        newProjectile.GetComponent<Rigidbody2D>().isKinematic = true;
-        rockLauncher.SetCurrentRock(newProjectile);
-    }
-
-    void ActualiseScore()
-    {
-        currentScore += Random.Range(minToAdd, maxToAdd);
-        CanvasManager.instance.RefreshScore(currentScore);
-    }
-
-    public void EndLevel()
-    {
-
+        score.AddScore();
     }
 }

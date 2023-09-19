@@ -17,7 +17,6 @@ public class LevelTimer : MonoBehaviour
             if(currentTimer <= 0)
             {
                 StopTimer();
-                GameManager.intance.EndLevel();
             }
         }
     }
