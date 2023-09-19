@@ -14,6 +14,11 @@ public class LevelTimer : MonoBehaviour
         {
             currentTimer -= Time.deltaTime;
             CanvasManager.instance.RefreshTimer(currentTimer);
+            if(currentTimer <= 0)
+            {
+                StopTimer();
+                GameManager.intance.EndLevel();
+            }
         }
     }
 
@@ -25,7 +30,7 @@ public class LevelTimer : MonoBehaviour
 
     public void StopTimer()
     {
-        currentTimer = startValue;
+        currentTimer = 0f;
         CanvasManager.instance.RefreshTimer(currentTimer);
         isRunning = false;
     }

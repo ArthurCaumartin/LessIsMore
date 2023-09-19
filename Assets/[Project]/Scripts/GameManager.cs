@@ -12,11 +12,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] int currentScore;
     [SerializeField] int maxToAdd, minToAdd;
 
-    [Header("Level Item :")]
+    [Header("Level Object :")]
     [SerializeField] GameObject targetPrefab;
-    [SerializeField] Transform targetSpawn;
-    [SerializeField] GameObject rockPrefab;
-    [SerializeField] Transform rockSpawn;
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] Transform inGameProjectileSpawn;
 
     void Awake()
     {
@@ -25,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        InitialiseGameLevel();
+        // InitialiseGameLevel();
     }
 
     public void TargetHit()
@@ -37,20 +36,25 @@ public class GameManager : MonoBehaviour
     public void InitialiseGameLevel()
     {
         TargetManager.instance.SpawnTarget();
-        SpawnNewRock();
+        SpawnNewProjectile();
         levelTimer.StartTimer();
     }
 
-    public void SpawnNewRock()
+    public void SpawnNewProjectile()
     {
-        GameObject newRock = Instantiate(rockPrefab, rockSpawn.position, Quaternion.identity);
-        newRock.GetComponent<Rigidbody2D>().isKinematic = true;
-        rockLauncher.SetCurrentRock(newRock);
+        GameObject newProjectile = Instantiate(projectilePrefab, inGameProjectileSpawn.position, Quaternion.identity);
+        newProjectile.GetComponent<Rigidbody2D>().isKinematic = true;
+        rockLauncher.SetCurrentRock(newProjectile);
     }
 
     void ActualiseScore()
     {
         currentScore += Random.Range(minToAdd, maxToAdd);
         CanvasManager.instance.RefreshScore(currentScore);
+    }
+
+    public void EndLevel()
+    {
+
     }
 }

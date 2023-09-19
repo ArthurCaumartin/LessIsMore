@@ -5,20 +5,29 @@ using UnityEngine;
 public class RockDestroy : MonoBehaviour
 {
     [SerializeField] ParticleSystem particle;
-    public bool targetHit;
+    public bool haveHitTarget;
+
     public void DoDestroy()
     {
-        if(!targetHit)
+        if(!haveHitTarget)
         {
             GameObject newParticle = Instantiate(particle.gameObject, transform.position, Quaternion.identity);
             Destroy(newParticle.gameObject, particle.main.duration);
         }
-        GameManager.intance.SpawnNewRock();
         Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        MenuElement menuElement = other.GetComponent<MenuElement>();
+        if(menuElement)
+        {
+            MenuManager.instance.SpawnMenuProjectile();
+        }
+        else
+        {
+            GameManager.intance.SpawnNewProjectile();
+        }
         DoDestroy();
     }
 }

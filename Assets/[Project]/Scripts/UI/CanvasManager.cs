@@ -24,7 +24,7 @@ public class CanvasManager : MonoBehaviour
         string[] timerString = timer.ToString().Split(",");
         string seconds = timerString[0];
         char millSeconds = ' ';
-        if(timerString.Length > 0)
+        if(timerString.Length > 1)
             millSeconds = timerString[1].ToCharArray()[0];
 
         timerTexte.text = "Time left : " + seconds + "." + millSeconds;

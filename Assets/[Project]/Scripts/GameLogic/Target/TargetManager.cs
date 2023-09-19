@@ -22,16 +22,16 @@ public class TargetManager : MonoBehaviour
     {
         if(currentTarget)
             Destroy(currentTarget);
-            
+        
         GameObject toSpawn = targetComponentPrefab[Random.Range(0, targetComponentPrefab.Count)];
         currentTarget = Instantiate(toSpawn, transform);
     }
 
-    // [ContextMenu("RemoveTarget")]
-    // void RemoveTarget()
-    // {
-    //     currentTarget.transform.DOMove(targetRemovePoint.position, animationSpeed)
-    //     .SetSpeedBased()
-    //     .SetEase(curve);
-    // }
+    [ContextMenu("RemoveTarget")]
+    void RemoveTarget()
+    {
+        currentTarget.transform.DOMove(targetRemovePoint.position, animationSpeed)
+        .SetSpeedBased()
+        .SetEase(curve);
+    }
 }
