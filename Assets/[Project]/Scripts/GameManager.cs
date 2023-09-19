@@ -7,7 +7,11 @@ public class GameManager : MonoBehaviour
     public static GameManager intance;
     [SerializeField] RockLauncher rockLauncher;
     [SerializeField] LevelTimer levelTimer;
-        
+
+    [Header("Score :")]
+    [SerializeField] int currentScore;
+    [SerializeField] int maxToAdd, minToAdd;
+
     [Header("Level Item :")]
     [SerializeField] GameObject targetPrefab;
     [SerializeField] Transform targetSpawn;
@@ -26,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     public void TargetHit()
     {
-
+        ActualiseScore();
     }
 
     [ContextMenu("InitialiseGameLevel")]
@@ -42,5 +46,11 @@ public class GameManager : MonoBehaviour
         GameObject newRock = Instantiate(rockPrefab, rockSpawn.position, Quaternion.identity);
         newRock.GetComponent<Rigidbody2D>().isKinematic = true;
         rockLauncher.SetCurrentRock(newRock);
+    }
+
+    void ActualiseScore()
+    {
+        currentScore += Random.Range(minToAdd, maxToAdd);
+        CanvasManager.instance.RefreshScore(currentScore);
     }
 }
