@@ -5,7 +5,6 @@ using UnityEngine;
 public class TargetManager : MonoBehaviour
 {
     public static TargetManager instance;
-    [SerializeField] Transform targetComponentSpawn;
     [SerializeField] List<GameObject> targetComponentPrefab;
     GameObject currentTarget;
 
@@ -20,6 +19,6 @@ public class TargetManager : MonoBehaviour
             Destroy(currentTarget);
             
         GameObject toSpawn = targetComponentPrefab[Random.Range(0, targetComponentPrefab.Count)];
-        currentTarget = Instantiate(toSpawn, targetComponentSpawn.position, Quaternion.identity);
+        currentTarget = Instantiate(toSpawn, transform.position, Quaternion.identity);
     }
 }
