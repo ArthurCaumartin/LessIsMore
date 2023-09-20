@@ -18,7 +18,7 @@ public class LevelTimer : MonoBehaviour
             backgroundTimer.SetBackgroundTimerColor(Mathf.InverseLerp(0, startTimer, currentTimer));
             if(currentTimer <= 0)
             {
-                StopTimer();
+                TimerEnd();
             }
         }
     }
@@ -34,5 +34,13 @@ public class LevelTimer : MonoBehaviour
         currentTimer = 0f;
         CanvasManager.instance.RefreshTimer(currentTimer);
         isRunning = false;
+    }
+
+    public void TimerEnd()
+    {
+        StopTimer();
+        GameManager.intance.EndGameLevel();
+
+        
     }
 }

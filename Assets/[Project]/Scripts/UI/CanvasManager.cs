@@ -11,6 +11,9 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerTexte;
     [SerializeField] TextMeshProUGUI scoreTexte;
 
+    [Header("End Level :")]
+    [SerializeField] GameObject endLevelPanel;
+
     void Awake()
     {
         instance = this;
@@ -30,5 +33,10 @@ public class CanvasManager : MonoBehaviour
     public void RefreshScore(int score)
     {
         scoreTexte.text = "Money Waist : " + score.ToString() + "$";
+    }
+
+    public void SetEndLevelPanel()
+    {
+
     }
 }

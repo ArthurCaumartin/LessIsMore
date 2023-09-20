@@ -1525,6 +1525,7 @@ MonoBehaviour:
   levelTimer: {fileID: 600315044}
   score: {fileID: 600315042}
   projectileManager: {fileID: 2144982821}
+  backgroundColor: {fileID: 0}
   physicsUiObject: {fileID: 1931509173}
   canvasObject: {fileID: 8106853872942820212}
   projectilePrefab: {fileID: 7706980834541955449, guid: 70663a2c468fe82489e47830bc0610b1, type: 3}
@@ -2634,37 +2635,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1026766571510097281, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1026766571510097281, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1204548258072808208, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2739134358105209441, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4794961889649068512, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
       propertyPath: m_Name
       value: '||| Canvas |||'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4794961889649068512, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5451181530920464864, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5451181530920464864, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 7660573743045310258, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2707,9 +2680,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5365394610526884963, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
-    - {fileID: 5811545081623946555, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a25209239ccd052479ec576a9a397e6a, type: 3}

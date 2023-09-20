@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
         levelTimer.StartTimer();
     }
 
+    public void EndGameLevel()
+    {
+        
+    }
+
     public void TargetHit()
     {
         score.AddScore();
