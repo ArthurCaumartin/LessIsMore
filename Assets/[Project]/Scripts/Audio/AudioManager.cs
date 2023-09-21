@@ -12,6 +12,11 @@ public class AudioManager : MonoBehaviour
         instance = this;    
     }
 
+    public void SetFXVolume()
+    {
+        audioSource.volume = GameSettings.instance.fxVolume;
+    }
+
     public void PlaySF(AudioClip clipToPlay)
     {
         audioSource.PlayOneShot(clipToPlay);

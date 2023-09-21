@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         print("Clear Game");
 
         ProjectileManager.instance.DeleteProjectile();
+        backgroundColor.SetBackgroundTimerColor(0.5f);
 
         //! In Game
         score.ResetScore();

@@ -14,6 +14,7 @@ public class TargetHit : MonoBehaviour
         if(rockDestroy)
         {
             GameManager.intance.BuildingClear(false);
+            AudioManager.instance.PlaySF(AudioBank.instance.GetRandomGlassBreak());
             DisableThisTarget();
         }
     }

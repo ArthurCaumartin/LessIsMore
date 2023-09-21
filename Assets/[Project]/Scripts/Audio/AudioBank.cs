@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class AudioBank : MonoBehaviour
 {
+    public static AudioBank instance;
     [SerializeField] ScriptableAudioBank scriptableAudioBank;
     public static AudioClip rockHit1;
     public static AudioClip rockHit2;
     [Space]
-    public static AudioClip glassBreak1;
-    public static AudioClip glassBreak2;
-    public static AudioClip glassBreak3;
+    [SerializeField] List<AudioClip> glassBreakList;
 
-    void InitialiseBank()
+    void Awake()
     {
-        rockHit1 = scriptableAudioBank.rockHit1;
-        rockHit2 = scriptableAudioBank.rockHit2;
+        instance = this;
+    }
 
-        glassBreak1 = scriptableAudioBank.glassBreak1;
-        glassBreak2 = scriptableAudioBank.glassBreak2;
-        glassBreak3 = scriptableAudioBank.glassBreak3;
+    public AudioClip GetRandomGlassBreak()
+    {
+        return glassBreakList[Random.Range(0,glassBreakList.Count)];
     }
 }

@@ -23,6 +23,7 @@ public class MenuElement : MonoBehaviour
         if(rockDestroy)
         {
             spriteRenderer.sprite = brokenElementSprite;
+            AudioManager.instance.PlaySF(AudioBank.instance.GetRandomGlassBreak());
             MenuManager.instance.PlayMenuElementAnimation();
             hasBennHit = true;
         }
