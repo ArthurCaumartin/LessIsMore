@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f073b0d43db1b84aa2b4197fced2e7b, type: 3}
+  m_Name: ScriptableAudioBank
+  m_EditorClassIdentifier: 
+  rockHit1: {fileID: 0}
+  rockHit2: {fileID: 0}
+  glassBreak1: {fileID: 8300000, guid: acc8216c664ada7469ca65961dfbe30c, type: 3}
+  glassBreak2: {fileID: 8300000, guid: 45c2e1293b2f0d846a25bb102912404e, type: 3}
+  glassBreak3: {fileID: 8300000, guid: 5827b8bf5f3e48d4aa7dc35a6ac0016d, type: 3}

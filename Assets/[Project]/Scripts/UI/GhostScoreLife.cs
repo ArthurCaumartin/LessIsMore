@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class GhostScoreLife : MonoBehaviour
 {
@@ -16,16 +17,24 @@ public class GhostScoreLife : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
     }
 
+    public void Initialise(RectTransform creatorRectTransform)
+    {
+        rectTransform = creatorRectTransform;
+    }
+
     void Update()
     {
-        fallingValue -=  Time.deltaTime * fallingSpeed;
+        float lerpTime = 1;
+        lerpTime -= Time.deltaTime;
 
-        Color fallingcolor = new Color(text.color.r, text.color.g, text.color.b, text.color.a - fallingValue);
-        text.color = fallingcolor;
+        Color newColorText = new Color(text.color.r, text.color.g, text.color.b, lerpTime);
+        text.color = newColorText;
 
-        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y - fallingValue);
+        fallingValue = fallingSpeed * Mathf.InverseLerp(1, 0, lerpTime);
+        Vector2 newRectPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + fallingValue);
+        rectTransform.anchoredPosition = newRectPosition;
 
-        if(text.color.a <= 0f)
+        if(lerpTime <= 0)
         {
             print("Delete ghost");
             Destroy(gameObject);

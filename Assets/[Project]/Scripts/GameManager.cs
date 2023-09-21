@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         //! In Game
         score.ResetScore();
         levelTimer.StopTimer();
-        CanvasManager.instance.ResetUI();
+        CanvasManager.instance.ResetUI();//* a jouer aprés remove animation
 
         //! Menu
         physicsUiObject.SetActive(false);
