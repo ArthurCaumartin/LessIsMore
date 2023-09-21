@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] LevelTimer levelTimer;
     [SerializeField] Score score;
     [SerializeField] ProjectileManager projectileManager;
+    [SerializeField] BackgroundColor backgroundColor;
 
     [Header("Core GameObject :")]
     [SerializeField] GameObject physicsUiObject;
@@ -52,16 +53,16 @@ public class GameManager : MonoBehaviour
     [ContextMenu("InitialiseGameLevel")]
     public void StartGameLevel()
     {
-        // backgroundColor.BackgroundTransition(1.5f, () =>
-        // {
-        //     TargetManager.instance.SpawnTarget();
-        //     projectileManager.SpawnNewProjectile();
-        //     levelTimer.StartTimer();
-        // });
+        backgroundColor.BackgroundTransition(1.5f, () =>
+        {
+            TargetManager.instance.SpawnTarget();
+            projectileManager.SpawnNewProjectile();
+            levelTimer.StartTimer();
+        });
 
-        TargetManager.instance.SpawnTarget();
-        projectileManager.SpawnNewProjectile();
-        levelTimer.StartTimer();
+        // TargetManager.instance.SpawnTarget();
+        // projectileManager.SpawnNewProjectile();
+        // levelTimer.StartTimer();
     }
 
     [ContextMenu("EndGameLevel")]
