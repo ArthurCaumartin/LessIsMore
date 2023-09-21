@@ -13,7 +13,7 @@ public class TargetHit : MonoBehaviour
         ProjectileDestroy rockDestroy = other.GetComponent<ProjectileDestroy>();
         if(rockDestroy)
         {
-            GameManager.intance.TargetHit();
+            GameManager.intance.TargetGetHit(false);
             DisableThisTarget();
         }
     }

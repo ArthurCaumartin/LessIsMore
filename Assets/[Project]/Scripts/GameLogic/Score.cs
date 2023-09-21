@@ -6,16 +6,23 @@ using UnityEngine.Rendering;
 public class Score : MonoBehaviour
 {
     [SerializeField] int currentScore;
-    [SerializeField] int minToAdd, maxToAdd;
-
+    [SerializeField] int minToAddOnTargetHit, maxToAddOnTargetHit;
+    [Space]
+    [SerializeField] int minToAddOnBuilding, maxToAddOnBuilding;
     public int GetScore()
     {
         return currentScore;
     }
 
-    public void AddScore()
+    public void AddTargetScore()
     {
-        currentScore += Random.Range(minToAdd, maxToAdd);
+        currentScore += Random.Range(minToAddOnTargetHit, maxToAddOnTargetHit);
+        CanvasManager.instance.RefreshScore(currentScore);
+    }
+
+    public void AddBuildingScore()
+    {
+        currentScore += Random.Range(minToAddOnBuilding, maxToAddOnBuilding);
         CanvasManager.instance.RefreshScore(currentScore);
     }
 

@@ -32,8 +32,10 @@ public class TargetManager : MonoBehaviour
     }
 
     [ContextMenu("RemoveTarget")]
-    public void RemoveTarget(Transform containerTransform)
+    public void RemoveBuilding(Transform containerTransform)
     {
+        GameManager.intance.TargetGetHit(true);
+
         containerTransform.transform.DOMove(targetRemovePoint.position, animationSpeed)
         .SetEase(curve)
         .OnComplete(() =>
@@ -45,6 +47,6 @@ public class TargetManager : MonoBehaviour
 
     public void AllTargetDerstroy(Transform targetContainer)
     {
-        RemoveTarget(targetContainer);
+        RemoveBuilding(targetContainer);
     }
 }

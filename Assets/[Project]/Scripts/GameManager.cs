@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] LevelTimer levelTimer;
     [SerializeField] Score score;
     [SerializeField] ProjectileManager projectileManager;
-    [SerializeField] BackgroundColor backgroundColor;
 
     [Header("Core GameObject :")]
     [SerializeField] GameObject physicsUiObject;
@@ -72,8 +71,11 @@ public class GameManager : MonoBehaviour
         CanvasManager.instance.SetEndLevelPanel(score.GetScore());
     }
 
-    public void TargetHit()
+    public void TargetGetHit(bool isBuilding)
     {
-        score.AddScore();
+        if(isBuilding)
+            score.AddBuildingScore();
+        else
+            score.AddTargetScore();
     }
 }
