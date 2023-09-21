@@ -6,21 +6,22 @@ using UnityEngine;
 public enum State
 {
     Menu,
-    InGame
+    InGame,
+    NoneSet
 }
 
 public class GameState : MonoBehaviour
 {
     public static GameState instance;
+    [SerializeField] State currentGameState;
+    
     void Awake()
     {
         instance = this;
     }
-    State currentGameState;
     
     void Start()
     {
-        currentGameState = State.InGame;
         SetGameState(State.Menu);
     }
 

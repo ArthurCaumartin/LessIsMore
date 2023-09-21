@@ -28,7 +28,7 @@ public class MenuManager : MonoBehaviour
     {
         foreach (MenuElement item in menuElementList)
         {
-            print(item.transform.parent.gameObject.name);
+            // print(item.transform.parent.gameObject.name);
             if(item.transform.parent.gameObject.activeSelf)
                 item.RemoveAnimation();
         }

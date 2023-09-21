@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Score : MonoBehaviour
 {
     [SerializeField] int currentScore;
     [SerializeField] int minToAdd, maxToAdd;
+
+    public int GetScore()
+    {
+        return currentScore;
+    }
 
     public void AddScore()
     {

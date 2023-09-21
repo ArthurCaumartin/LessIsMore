@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         //! In Game
         score.ResetScore();
         levelTimer.StopTimer();
-        canvasObject.SetActive(false);
+        CanvasManager.instance.ResetUI();
 
         //! Menu
         physicsUiObject.SetActive(false);
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void ActiveInGame()
     {
-        canvasObject.SetActive(true);
+        CanvasManager.instance.SetInGameUI();
         StartGameLevel();
     }
 
@@ -65,9 +65,11 @@ public class GameManager : MonoBehaviour
         levelTimer.StartTimer();
     }
 
+    [ContextMenu("EndGameLevel")]
     public void EndGameLevel()
     {
-        
+        projectileManager.DeleteProjectile();
+        CanvasManager.instance.SetEndLevelPanel(score.GetScore());
     }
 
     public void TargetHit()

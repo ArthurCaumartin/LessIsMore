@@ -29,7 +29,8 @@ public class ProjectileLauncher : MonoBehaviour
             shootDistance = Vector2.Distance(chargeStartPosition, chargeEndPosition);
             shootDistance = Mathf.Clamp(shootDistance, -50f, maxChargeDistance);
 
-            SetLineRendererPosition();
+            if(currentProjectileRigidbody)
+                SetLineRendererPosition();
 
             Debug.DrawRay(chargeStartPosition, shootDirection * shootDistance, Color.green, 0.01f);
         }

@@ -35,25 +35,10 @@ public class BackgroundColor : MonoBehaviour
 
     public void SetBackgroundTimerColor(float time)
     { 
-        print(time);
-
         Color topEvaluateColor = topSkyGradien.Evaluate(time);
         Color botEvaluateColor = botSkyGradien.Evaluate(time);
 
         backgroundLineRenderer.startColor = botEvaluateColor;
         backgroundLineRenderer.endColor = topEvaluateColor;
     }
-
-    // Gradient GetDoubleGradientColor(float time)
-    // {
-    //     Gradient gradientToReturn = new Gradient();
-
-    //     Color topEvaluateColor = topSkyGradien.Evaluate(time);
-    //     Color botEvaluateColor = botSkyGradien.Evaluate(time);
-
-    //     gradientToReturn.colorKeys[0] = new GradientColorKey(botEvaluateColor, 0);
-    //     gradientToReturn.colorKeys[1] = new GradientColorKey(topEvaluateColor, 1);
-
-    //     return gradientToReturn;
-    // }
 }
