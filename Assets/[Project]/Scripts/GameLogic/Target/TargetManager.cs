@@ -2,51 +2,72 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class TargetManager : MonoBehaviour
 {
     public static TargetManager instance;
-    [SerializeField] float animationSpeed;
+    [SerializeField] float animationDuration;
     [SerializeField] AnimationCurve curve;
     [SerializeField] Transform targetSpawnPoint;
     [SerializeField] Transform targetRemovePoint;
     [SerializeField] List<GameObject> targetComponentPrefab;
-    GameObject currentTarget;
+    GameObject currentBuilding;
 
     void Awake()
     {
         instance = this;
     }
 
-    public void SpawnTarget()
+    public void SpawnNewBuilding()
     {
-        if(currentTarget)
-            Destroy(currentTarget);
+        if(currentBuilding)
+            Destroy(currentBuilding);
         
-        GameObject toSpawn = targetComponentPrefab[Random.Range(0, targetComponentPrefab.Count)];
-        currentTarget = Instantiate(toSpawn, targetSpawnPoint.position, Quaternion.identity, transform);
+        GameObject toSpawn = targetComponentPrefab[UnityEngine.Random.Range(0, targetComponentPrefab.Count)];
+        currentBuilding = Instantiate(toSpawn, targetSpawnPoint.position, Quaternion.identity, transform);
         
         //! Spawn animation
-        currentTarget.transform.DOMove(transform.position, animationSpeed)
+        currentBuilding.transform.DOMove(transform.position, animationDuration)
         .SetEase(curve);
     }
 
     [ContextMenu("RemoveTarget")]
-    public void RemoveBuilding(Transform containerTransform)
+    public void RemoveBuildingAllTargetClear(Transform containerTransform)
     {
-        GameManager.intance.TargetGetHit(true);
+        currentBuilding = null;
+        GameManager.intance.BuildingClear(true);
 
-        containerTransform.transform.DOMove(targetRemovePoint.position, animationSpeed)
+        containerTransform.transform.DOMove(targetRemovePoint.position, animationDuration)
         .SetEase(curve)
         .OnComplete(() =>
         {
             Destroy(containerTransform.gameObject);
-            SpawnTarget();
+            SpawnNewBuilding();
         });
     }
 
     public void AllTargetDerstroy(Transform targetContainer)
     {
-        RemoveBuilding(targetContainer);
+        RemoveBuildingAllTargetClear(targetContainer);
+    }
+
+    public bool HasCurrentBuilding()
+    {
+        return currentBuilding;
+    }
+
+    public void RemoveCurrentBuidingAnimation(Action onComplet)
+    {
+        if(!currentBuilding)
+            return;
+
+        currentBuilding.transform.DOMove(targetRemovePoint.position, animationDuration)
+        .SetEase(curve)
+        .OnComplete(() =>
+        {
+            Destroy(currentBuilding);
+            onComplet();
+        });
     }
 }

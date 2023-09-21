@@ -17,8 +17,6 @@ public class MenuElement : MonoBehaviour
     bool hasBennHit = false;
     Vector3 startPosition;
 
-
-
     void OnTriggerEnter2D(Collider2D other)
     {
         ProjectileDestroy rockDestroy = other.GetComponent<ProjectileDestroy>();

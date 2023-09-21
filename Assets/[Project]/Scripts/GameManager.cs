@@ -40,29 +40,41 @@ public class GameManager : MonoBehaviour
 
     public void ActiveMenu()
     {
-        physicsUiObject.SetActive(true);
         projectileManager.SpawnNewProjectile();
-    }
 
-    public void ActiveInGame()
-    {
-        CanvasManager.instance.SetInGameUI();
-        StartGameLevel();
+        print("Currrent Target = " + TargetManager.instance.HasCurrentBuilding());
+        if(TargetManager.instance.HasCurrentBuilding())
+        {
+            print("Remove current Build !");
+            TargetManager.instance.RemoveCurrentBuidingAnimation(() => 
+            {
+                physicsUiObject.SetActive(true);
+            });
+        }
+        else
+        {
+            print("Just turn On PhUI!");
+            physicsUiObject.SetActive(true);
+        }
     }
 
     [ContextMenu("InitialiseGameLevel")]
     public void StartGameLevel()
     {
+        CanvasManager.instance.SetInGameUI();
+
         backgroundColor.BackgroundTransition(1.5f, () =>
         {
-            TargetManager.instance.SpawnTarget();
+            TargetManager.instance.SpawnNewBuilding();
             projectileManager.SpawnNewProjectile();
             levelTimer.StartTimer();
         });
+    }
 
-        // TargetManager.instance.SpawnTarget();
-        // projectileManager.SpawnNewProjectile();
-        // levelTimer.StartTimer();
+    public void RestartGame()
+    {
+        ClearGame();
+        StartGameLevel();
     }
 
     [ContextMenu("EndGameLevel")]
@@ -72,7 +84,7 @@ public class GameManager : MonoBehaviour
         CanvasManager.instance.SetEndLevelPanel(score.GetScore());
     }
 
-    public void TargetGetHit(bool isBuilding)
+    public void BuildingClear(bool isBuilding)
     {
         if(isBuilding)
             score.AddBuildingScore();

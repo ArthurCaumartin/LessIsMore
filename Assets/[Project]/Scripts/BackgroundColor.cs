@@ -10,7 +10,7 @@ public class BackgroundColor : MonoBehaviour
     [SerializeField] Gradient topSkyGradien;
     [SerializeField] Gradient botSkyGradien;
 
-    public void BackgroundTransition(float duration, Action afterColorTransition)
+    public void BackgroundTransition(float duration, Action toDoAfterColorAnimation)
     {
         DOTween.To((time) =>
         {
@@ -29,7 +29,7 @@ public class BackgroundColor : MonoBehaviour
         .SetEase(Ease.Linear)
         .OnComplete(() => 
         {
-            afterColorTransition();
+            toDoAfterColorAnimation();
         });
     }
 

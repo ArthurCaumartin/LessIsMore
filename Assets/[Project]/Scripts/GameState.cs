@@ -70,7 +70,7 @@ public class GameState : MonoBehaviour
             break;
 
             case State.InGame : 
-                GameManager.intance.ActiveInGame();
+                GameManager.intance.StartGameLevel();
             break;
         }
     }

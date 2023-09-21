@@ -1334,7 +1334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d40cf1db77a0a4292074da5e41dfbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationSpeed: 0.5
+  animationDuration: 0.5
   curve:
     serializedVersion: 2
     m_Curve:
@@ -1809,6 +1809,7 @@ MonoBehaviour:
   levelTimer: {fileID: 600315044}
   score: {fileID: 600315042}
   projectileManager: {fileID: 2144982821}
+  backgroundColor: {fileID: 168754709}
   physicsUiObject: {fileID: 1931509173}
   canvasObject: {fileID: 8106853872942820212}
   projectilePrefab: {fileID: 7706980834541955449, guid: 70663a2c468fe82489e47830bc0610b1, type: 3}
@@ -2924,6 +2925,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1597237023625456180, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597237023625456180, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597237023625456180, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1150893126}
+    - target: {fileID: 1597237023625456180, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597237023625456180, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMenuState
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597237023625456180, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameState, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597237023625456180, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910337093034118930, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910337093034118930, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910337093034118930, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1150893121}
+    - target: {fileID: 1910337093034118930, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910337093034118930, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910337093034118930, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910337093034118930, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4794961889649068512, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
       propertyPath: m_Name
       value: '||| Canvas |||'
