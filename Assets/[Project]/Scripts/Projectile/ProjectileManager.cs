@@ -17,8 +17,10 @@ public class ProjectileManager : MonoBehaviour
         instance = this;
     }
 
-    public void SpawnNewProjectile()
+    public void SpawnNewProjectile(GameObject caller)
     {
+        print("Spawn proj by : " + caller.name);
+
         Vector2 spawnPoint = GetSpawnPoint();
         GameObject newProjectile = Instantiate(projectilePrefab, spawnPoint, Quaternion.identity);
         newProjectile.GetComponent<Rigidbody2D>().isKinematic = true;

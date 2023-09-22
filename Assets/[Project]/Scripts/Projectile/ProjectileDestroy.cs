@@ -11,7 +11,7 @@ public class ProjectileDestroy : MonoBehaviour
         GameObject newParticle = Instantiate(particle.gameObject, transform.position, Quaternion.identity);
         Destroy(newParticle.gameObject, particle.main.duration);
 
-        ProjectileManager.instance.SpawnNewProjectile();
+        ProjectileManager.instance.SpawnNewProjectile(gameObject);
         Destroy(gameObject);
     }
 

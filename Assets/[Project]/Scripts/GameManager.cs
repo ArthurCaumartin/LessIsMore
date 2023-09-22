@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
 
     public void ActiveMenu()
     {
-        projectileManager.SpawnNewProjectile();
 
         print("Currrent Target = " + TargetManager.instance.HasCurrentBuilding());
         if(TargetManager.instance.HasCurrentBuilding())
@@ -50,12 +49,14 @@ public class GameManager : MonoBehaviour
             TargetManager.instance.RemoveCurrentBuidingAnimation(() => 
             {
                 physicsUiObject.SetActive(true);
+                projectileManager.SpawnNewProjectile(gameObject);
             });
         }
         else
         {
             print("Just turn On PhUI!");
             physicsUiObject.SetActive(true);
+            projectileManager.SpawnNewProjectile(gameObject);
         }
     }
 
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour
         backgroundColor.BackgroundTransition(1.5f, () =>
         {
             TargetManager.instance.SpawnNewBuilding();
-            projectileManager.SpawnNewProjectile();
+            projectileManager.SpawnNewProjectile(gameObject);
             levelTimer.StartTimer();
         });
     }

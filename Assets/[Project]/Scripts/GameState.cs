@@ -27,7 +27,7 @@ public class GameState : MonoBehaviour
 
     public void SetGameState(State stateToSet)
     {
-        print("Set State : " + stateToSet);
+        // print("Set State : " + stateToSet);
         if(stateToSet == currentGameState)
             return;
         
