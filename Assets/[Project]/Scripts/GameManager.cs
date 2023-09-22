@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     public void ClearGame()
     {
-        print("Clear Game");
+        // print("Clear Game");
 
         ProjectileManager.instance.DeleteProjectile();
         backgroundColor.SetBackgroundTimerColor(0.5f);
@@ -42,10 +42,10 @@ public class GameManager : MonoBehaviour
     public void ActiveMenu()
     {
 
-        print("Currrent Target = " + TargetManager.instance.HasCurrentBuilding());
+        // print("Currrent Target = " + TargetManager.instance.HasCurrentBuilding());
         if(TargetManager.instance.HasCurrentBuilding())
         {
-            print("Remove current Build !");
+            // print("Remove current Build !");
             TargetManager.instance.RemoveCurrentBuidingAnimation(() => 
             {
                 physicsUiObject.SetActive(true);
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            print("Just turn On PhUI!");
+            // print("Just turn On PhUI!");
             physicsUiObject.SetActive(true);
             projectileManager.SpawnNewProjectile(gameObject);
         }

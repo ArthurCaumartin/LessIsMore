@@ -2,42 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 
 public class GhostScoreLife : MonoBehaviour
 {
-    [SerializeField] float fallingSpeed;
-    RectTransform rectTransform;
+    [SerializeField] AnimationCurve textAlphaCurve;
+    [SerializeField] float yOffSet;
+    [SerializeField] float speed;
+    float positionTime;
+    float alphaTime;
     TextMeshProUGUI text;
-    float fallingValue;
+    RectTransform rectTransform;
 
     void Start()
     {
-        rectTransform = (RectTransform)transform;
         text = GetComponent<TextMeshProUGUI>();
-    }
-
-    public void Initialise(RectTransform creatorRectTransform)
-    {
-        rectTransform = creatorRectTransform;
+        rectTransform = (RectTransform)transform;
+        alphaTime = 1;
     }
 
     void Update()
     {
-        float lerpTime = 1;
-        lerpTime -= Time.deltaTime;
+        positionTime += Time.deltaTime * speed;
+        Vector3 newPosition = new Vector3(0, yOffSet * positionTime, 0);
+        rectTransform.anchoredPosition = newPosition;
 
-        Color newColorText = new Color(text.color.r, text.color.g, text.color.b, lerpTime);
-        text.color = newColorText;
+        alphaTime -= Time.deltaTime * speed;
+        text.alpha = alphaTime;
 
-        fallingValue = fallingSpeed * Mathf.InverseLerp(1, 0, lerpTime);
-        Vector2 newRectPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + fallingValue);
-        rectTransform.anchoredPosition = newRectPosition;
-
-        if(lerpTime <= 0)
+        if(alphaTime <= 0)
         {
-            print("Delete ghost");
             Destroy(gameObject);
         }
-    }
+    }   
 }

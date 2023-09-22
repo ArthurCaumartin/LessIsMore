@@ -1407,6 +1407,8 @@ MonoBehaviour:
   maxToAddOnTargetHit: 63
   minToAddOnBuilding: 237
   maxToAddOnBuilding: 243
+  delay: 0.3
+  scoreToAddList: 
   scoreTextTransform: {fileID: 408014648}
   ghostTextPrefab: {fileID: 169345733847195437, guid: acbe8d873c9986e4fb152c9471dd532e, type: 3}
 --- !u!114 &600315044
