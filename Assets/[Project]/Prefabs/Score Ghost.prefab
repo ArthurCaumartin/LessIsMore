@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2690888511070633068}
   - component: {fileID: 5153806492691777944}
   - component: {fileID: 8040353373845613385}
-  - component: {fileID: 6106453390446807559}
   m_Layer: 0
   m_Name: Score Ghost
   m_TagString: Untagged
@@ -135,16 +134,3 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &6106453390446807559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169345733847195437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f7a1dd83a3bf5143960c7274ad2016d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallingSpeed: 1

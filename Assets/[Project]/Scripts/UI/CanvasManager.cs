@@ -11,7 +11,6 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] GameObject inGameCanvasObject;
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] TextMeshProUGUI scoreValueText;
-    [SerializeField] GameObject ghostScorePrefab;
 
     [Header("End Level Panel :")]
     [SerializeField] RectTransform endLevelPanelTransform;
@@ -36,9 +35,6 @@ public class CanvasManager : MonoBehaviour
     public void RefreshScore(int score)
     {
         scoreValueText.text = score.ToString() + "$";
-
-        GameObject newGhost = Instantiate(ghostScorePrefab, transform.position, Quaternion.identity);
-        newGhost.GetComponent<RectTransform>().anchoredPosition = scoreValueText.rectTransform.anchoredPosition;
     }
 
     public void SetEndLevelPanel(int score)
