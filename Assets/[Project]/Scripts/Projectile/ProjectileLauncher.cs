@@ -54,7 +54,7 @@ public class ProjectileLauncher : MonoBehaviour
 
     public void SetCurrentProjectile(GameObject toSet)
     {
-        currentProjectileTransform =  toSet.GetComponent<Transform>();
+        currentProjectileTransform = toSet.GetComponent<Transform>();
         currentProjectileRigidbody = toSet.GetComponent<Rigidbody2D>();
         projectileLineRenderer = toSet.GetComponentInChildren<LineRenderer>();
     }
