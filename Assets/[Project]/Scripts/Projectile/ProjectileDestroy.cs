@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ProjectileDestroy : MonoBehaviour
 {
-    [SerializeField] ParticleSystem particle;
+    // [SerializeField] ParticleSystem particle;
 
     public void DoDestroy()
     {
-        GameObject newParticle = Instantiate(particle.gameObject, transform.position, Quaternion.identity);
-        Destroy(newParticle.gameObject, particle.main.duration);
+        // GameObject newParticle = Instantiate(particle.gameObject, transform.position, Quaternion.identity);
+        // Destroy(newParticle.gameObject, particle.main.duration);
 
         ProjectileManager.instance.SpawnNewProjectile(gameObject);
         Destroy(gameObject);

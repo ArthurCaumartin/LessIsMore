@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         CanvasManager.instance.SetEndLevelPanel(score.GetScore());
     }
 
-    public void BuildingClear(bool isBuilding)
+    public void AddScore(bool isBuilding)
     {
         if(isBuilding)
             score.AddBuildingScore();

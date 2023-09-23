@@ -13,6 +13,7 @@ public class MenuElement : MonoBehaviour
     [SerializeField] float animationDuration;
     [SerializeField] AnimationCurve animationCurve;
     [SerializeField] Transform animationTargetPosition;
+    [SerializeField] ParticleSystem glassParticleSysteme;
     [SerializeField] UnityEvent onHitEvent;
     bool hasBennHit = false;
     Vector3 startPosition;
@@ -23,6 +24,10 @@ public class MenuElement : MonoBehaviour
         if(rockDestroy)
         {
             spriteRenderer.sprite = brokenElementSprite;
+
+            GameObject newParticle = Instantiate(glassParticleSysteme.gameObject, transform.position, Quaternion.identity);
+            Destroy(newParticle.gameObject, glassParticleSysteme.main.duration);
+
             AudioManager.instance.PlaySF(AudioBank.instance.GetRandomGlassBreak());
             MenuManager.instance.PlayMenuElementAnimation();
             hasBennHit = true;

@@ -36,7 +36,7 @@ public class TargetManager : MonoBehaviour
     public void RemoveBuildingAllTargetClear(Transform containerTransform)
     {
         currentBuilding = null;
-        GameManager.intance.BuildingClear(true);
+        GameManager.intance.AddScore(true);
 
         containerTransform.transform.DOMove(targetRemovePoint.position, animationDuration)
         .SetEase(curve)

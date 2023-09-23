@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenGlassSprite: {fileID: 21300000, guid: 2bdaf658c8f076c41bf046de261f97be, type: 3}
+  glassParticlSysteme: {fileID: 1520546376438398162, guid: fa727798db8844d43ba83d8fbc77b7bb, type: 3}
 --- !u!1 &7074440189639286419
 GameObject:
   m_ObjectHideFlags: 0

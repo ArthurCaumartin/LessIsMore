@@ -162,6 +162,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   animationTargetPosition: {fileID: 4119855411102908318}
+  glassParticleSysteme: {fileID: 1520546376438398162, guid: fa727798db8844d43ba83d8fbc77b7bb, type: 3}
   onHitEvent:
     m_PersistentCalls:
       m_Calls: []
