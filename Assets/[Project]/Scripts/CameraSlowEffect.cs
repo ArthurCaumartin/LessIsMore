@@ -17,31 +17,39 @@ public class CameraSlowEffect : MonoBehaviour
     [Header("Camera Animation :")]
     [SerializeField] float cameraSize;
     [SerializeField] Vector3 cameraAnimatedPosition;
+    float startCameraSize;
+    Vector3 startCameraAnimatedPosition;
 
     void Update()
     {
         Time.timeScale = 1f;
 
-        if(!currentProjectileTransform)
+        if(currentProjectileTransform)
         { 
-            return;
-        }
+            projectilePositionTime = Mathf.InverseLerp(projectileStartPosition.position.x, transform.position.x, currentProjectileTransform.position.x);
 
-        //! Calcule la distance entre SlowEffect et le projectile
-        projectilePositionTime = Mathf.InverseLerp(projectileStartPosition.position.x, transform.position.x, currentProjectileTransform.position.x);
-    
-        if(projectilePositionTime > 0.8f)
+            if(projectilePositionTime > 0.8f)
+            {
+                print("nik tou");
+                float scaleTime = Mathf.InverseLerp(0.8f, 1f, projectilePositionTime);
+                CameraEffect(scaleTime);
+            }
+        }
+        else
         {
-            print("nik tou");
-            float scaleTime = Mathf.InverseLerp(0.8f, 1f, projectilePositionTime);
-            CameraEffect(scaleTime);
+            CameraEffect(0);
         }
     }
 
     void CameraEffect(float time)
     {
-        mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize,  cameraSize, time);
-        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, cameraAnimatedPosition, time);
+        if(time > 0.8f)
+        {
+            time = 0;
+        }
+          
+        mainCamera.orthographicSize = Mathf.Lerp(startCameraSize,  cameraSize, time);
+        mainCamera.transform.position = Vector3.Lerp(startCameraAnimatedPosition, cameraAnimatedPosition, time);
         Time.timeScale = time;
     }
 
