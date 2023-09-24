@@ -1598,7 +1598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundTimer: {fileID: 168754709}
-  startTimer: 571.63
+  startTimer: 30
 --- !u!1 &659766466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,8 +2032,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4850e92b2581742b9bfd97793a3839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicVolume: 0.502
-  fxVolume: 0.532
 --- !u!1 &1159946203
 GameObject:
   m_ObjectHideFlags: 0
@@ -3257,12 +3255,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 491305419190068903, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_fontSize
+      value: 28.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 491305419190068903, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
       propertyPath: m_fontColor.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 491305419190068903, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 491305419190068903, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1026766571510097281, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 630.6648
+      objectReference: {fileID: 0}
+    - target: {fileID: 1026766571510097281, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 31.5332
+      objectReference: {fileID: 0}
+    - target: {fileID: 1026766571510097281, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1026766571510097281, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -18.257
       objectReference: {fileID: 0}
     - target: {fileID: 1597237023625456180, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3320,13 +3342,49 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2739134358105209441, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753096429082793374, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 195.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753096429082793374, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0000023842
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397816040211608238, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_fontSize
+      value: 28.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397816040211608238, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28.17
+      objectReference: {fileID: 0}
     - target: {fileID: 4794961889649068512, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
       propertyPath: m_Name
       value: '||| Canvas |||'
       objectReference: {fileID: 0}
+    - target: {fileID: 5016620464107407411, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_fontSize
+      value: 28.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5016620464107407411, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28.17
+      objectReference: {fileID: 0}
     - target: {fileID: 5451181530920464864, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 229.5099
+      value: 192.6926
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451181530920464864, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 31.5332
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451181530920464864, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -49.574265
       objectReference: {fileID: 0}
     - target: {fileID: 7660573743045310258, guid: a25209239ccd052479ec576a9a397e6a, type: 3}
       propertyPath: m_LocalPosition.x
