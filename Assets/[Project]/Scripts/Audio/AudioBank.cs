@@ -10,6 +10,7 @@ public class AudioBank : MonoBehaviour
     public static AudioClip rockHit2;
     [Space]
     [SerializeField] List<AudioClip> glassBreakList;
+    [SerializeField] List<AudioClip> projectileLaunchList;
 
     void Awake()
     {
@@ -19,5 +20,10 @@ public class AudioBank : MonoBehaviour
     public AudioClip GetRandomGlassBreak()
     {
         return glassBreakList[Random.Range(0,glassBreakList.Count)];
+    }
+
+    public AudioClip GetRandomProjectile()
+    {
+        return projectileLaunchList[Random.Range(0,projectileLaunchList.Count)];
     }
 }

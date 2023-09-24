@@ -20,6 +20,8 @@ public class ProjectileManager : MonoBehaviour
     public void SpawnNewProjectile(GameObject caller)
     {
         // print("Spawn proj by : " + caller.name);
+        if(currentProjectile)
+            Destroy(currentProjectile);
 
         Vector2 spawnPoint = GetSpawnPoint();
         GameObject newProjectile = Instantiate(projectilePrefab, spawnPoint, Quaternion.identity);

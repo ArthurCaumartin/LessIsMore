@@ -61,6 +61,8 @@ public class ProjectileLauncher : MonoBehaviour
 
     void LaunchProjectile()
     {
+        AudioManager.instance.PlaySF(AudioBank.instance.GetRandomProjectile());
+
         projectileLineRenderer.enabled = false;
 
         currentProjectileRigidbody.GetComponent<ProjectileLife>().StartLife();
