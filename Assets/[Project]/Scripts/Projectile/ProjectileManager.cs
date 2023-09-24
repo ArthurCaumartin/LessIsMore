@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileManager : MonoBehaviour
 {
     public static ProjectileManager instance;
+    [SerializeField] CameraSlowEffect cameraSlowEffect;
     [SerializeField] ProjectileLauncher launcher;
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform inGameTransform;
@@ -23,6 +24,7 @@ public class ProjectileManager : MonoBehaviour
 
         Vector2 spawnPoint = GetSpawnPoint();
         GameObject newProjectile = Instantiate(projectilePrefab, spawnPoint, Quaternion.identity);
+        cameraSlowEffect.Initialise(newProjectile.transform);
         newProjectile.GetComponent<Rigidbody2D>().isKinematic = true;
         launcher.SetCurrentProjectile(newProjectile);
 
