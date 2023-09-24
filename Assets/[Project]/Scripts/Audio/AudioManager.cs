@@ -5,20 +5,28 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource audioSourceFX;
+    [SerializeField] AudioSource audioSourceMusic;
 
     void Awake()
     {
         instance = this;    
     }
 
-    public void SetFXVolume()
+    //! Call by Volume Slider events
+    public void SetFXVolume(float value)
     {
-        audioSource.volume = GameSettings.instance.fxVolume;
+        audioSourceFX.volume = value;
+    }
+
+    //! Call by Volume Slider events
+    public void SetMusicVolume(float value)
+    {
+        audioSourceMusic.volume = value;
     }
 
     public void PlaySF(AudioClip clipToPlay)
     {
-        audioSource.PlayOneShot(clipToPlay);
+        audioSourceFX.PlayOneShot(clipToPlay);
     }
 }

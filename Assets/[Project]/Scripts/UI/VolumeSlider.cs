@@ -1,26 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 using UnityEngine;
+using Unity.Mathematics;
 
 public class VolumeSlider : MonoBehaviour
 {
-    [SerializeField] Transform currentVolume;
     [SerializeField] Transform point0;
     [SerializeField] Transform point1;
+    [SerializeField] UnityEvent<float> onTriggerEnterEvents;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        SetVolume(other.transform);
+        float value = VolumeToSet(other.transform);
+        print(value);
+        onTriggerEnterEvents.Invoke(value);
     }
 
-    public void SetVolume(Transform hitTransform)
+    float VolumeToSet(Transform hitTransform)
     {
-        float point0x = point0.localPosition.x;
-        float point1x = point1.localPosition.y;
+        float point0x = point0.position.x;
+        float point1x = point1.position.x;
         float inversLerpValue = Mathf.InverseLerp(point0x, point1x, hitTransform.position.x);
-
-        // Vector3
-
-        print("Volume Slider hit : Value = " + inversLerpValue);
+        return inversLerpValue;
     }
 }
